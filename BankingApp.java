@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-// ===== User Class =====
+
 class User implements Serializable {
     private static final long serialVersionUID = 1L;
     private int userID;
@@ -26,7 +26,7 @@ class User implements Serializable {
     }
 }
 
-// ===== Asset Class =====
+
 class Asset implements Serializable {
     private static final long serialVersionUID = 1L;
     private int userID;
@@ -48,7 +48,7 @@ class Asset implements Serializable {
     }
 }
 
-// ===== Interfaces =====
+
 interface IUserManager {
     User createUser(String name, String email, String password) throws Exception;
     User login(String email, String password) throws Exception;
@@ -63,7 +63,7 @@ interface IPersistenceMechanism {
     void overwriteAssets(List<Asset> allAssets) throws Exception;
 }
 
-// ===== FilePersistence =====
+
 class FilePersistence implements IPersistenceMechanism {
     private static final String USERS_FILE = "users.ser";
     private static final String ASSETS_FILE = "assets.ser";
@@ -114,7 +114,7 @@ class FilePersistence implements IPersistenceMechanism {
     }
 }
 
-// ===== UserManager =====
+
 class UserManager implements IUserManager {
     private IPersistenceMechanism persistence = new FilePersistence();
 
@@ -145,7 +145,7 @@ class UserManager implements IUserManager {
     }
 }
 
-// ===== Main App =====
+
 public class BankingApp {
     static Scanner sc = new Scanner(System.in);
     static IPersistenceMechanism persistence = new FilePersistence();
@@ -172,7 +172,7 @@ public class BankingApp {
         }
 
     }
-        // manual used
+       //manual used
     static void clearAllData() {
         new File("users.ser").delete();
         new File("assets.ser").delete();
@@ -241,7 +241,7 @@ public class BankingApp {
             System.out.println("1. Display Portfolio");
             System.out.println("2. Add Asset");
             System.out.println("3. Remove Asset");
-            System.out.println("4. Edit Asset"); // <-- New option
+            System.out.println("4. Edit Asset"); 
             System.out.println("5. Logout");
             System.out.print("Choose option: ");
             int choice = sc.nextInt();
@@ -250,7 +250,7 @@ public class BankingApp {
             if (choice == 1) displayPortfolio(user);
             else if (choice == 2) addAsset(user);
             else if (choice == 3) removeAsset(user);
-            else if (choice == 4) editAsset(user); // <-- Call edit method
+            else if (choice == 4) editAsset(user); 
             else if (choice == 5) break;
             else System.out.println("Invalid option.");
         }
@@ -356,7 +356,7 @@ public class BankingApp {
             double newValue = sc.nextDouble();
             sc.nextLine();
     
-            // Replace asset with updated value
+          
             allAssets.remove(selectedAsset);
             Asset updatedAsset = new Asset(user.getUserID(), selectedAsset.toString().split("]")[0].substring(1), selectedAsset.getName(), newValue);
             allAssets.add(updatedAsset);
