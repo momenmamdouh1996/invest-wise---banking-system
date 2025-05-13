@@ -760,9 +760,6 @@ public class BankingApp {
 
                     System.out.printf("[%s] %s: $%.2f\n", asset.getType(), asset.getName(), value);
                     System.out.printf("   Zakat (2.5%%): $%.2f\n\n", zakat);
-
-                    total += value;
-                    zakatTotal += zakat;
                 }
             }
 
